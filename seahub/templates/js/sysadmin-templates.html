@@ -177,6 +177,9 @@
                 <a href="#device-errors/" class="a">{% trans "Errors" %}</a>
             </li>
             <% } %>
+            <li class="tab <% if (cur_tab == 'settings') { %> ui-state-active <% } %>">
+                <a href="#device-settings/" class="a">Setting</a>
+            </li>
         </ul>
     </div>
     <table class="hide">
@@ -228,6 +231,9 @@
             <li class="tab <% if (cur_tab == 'errors') { %> ui-state-active <% } %>">
                 <a href="#device-errors/" class="a">{% trans "Errors" %}</a>
             </li>
+            <li class="tab <% if (cur_tab == 'settings') { %> ui-state-active <% } %>">
+                <a href="#device-settings/" class="a">Setting</a>
+            </li>
         </ul>
         <button id="clean-device-errors" class="fright hide"><span class="vam">{% trans "Clean" %}</span></button>
     </div>
@@ -262,6 +268,47 @@
     </td>
     <td><%- error_msg %></td>
     <td><time title='<%- time %>'><%- time_from_now %></time></td>
+</script>
+
+<script type="text/template" id="device-settings-tmpl">
+    <div class="hd ovhd">
+        <ul class="tab-tabs-nav fleft">
+            <li class="tab <% if (cur_tab == 'desktop') { %> ui-state-active <% } %>">
+                <a href="#desktop-devices/" class="a">{% trans "Desktop" %}</a>
+            </li>
+            <li class="tab <% if (cur_tab == 'mobile') { %> ui-state-active <% } %>">
+                <a href="#mobile-devices/" class="a">{% trans "Mobile" %}</a>
+            </li>
+            <% if (is_pro) { %>
+            <li class="tab <% if (cur_tab == 'errors') { %> ui-state-active <% } %>">
+                <a href="#device-errors/" class="a">{% trans "Errors" %}</a>
+            </li>
+            <% } %>
+            <li class="tab <% if (cur_tab == 'settings') { %> ui-state-active <% } %>">
+                <a href="#device-settings/" class="a">Setting</a>
+            </li>
+        </ul>
+    </div>
+    <table class="hide">
+        <thead>
+            <tr>
+                <th width="30%">{% trans "IP" %}</th>
+                <th width="30%">{% trans "Execute Admin" %}</th>
+                <th width="30%">{% trans "Execute Time" %}</th>
+                <th width="10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <span class="loading-icon loading-tip"></span>
+    <div class="empty-tips hide">
+        <h2 class="alc">{% trans "No connected devices" %}</h2>
+    </div>
+    <div id="paginator">
+        <a class="prev js-previous hide" href="#">{% trans "Previous" %}</a>
+        <a class="next js-next hide" href="#">{% trans "Next" %}</a>
+    </div>
 </script>
 
 <script type="text/template" id="user-info-popup-tmpl">
