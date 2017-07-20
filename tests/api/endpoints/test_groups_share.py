@@ -20,7 +20,7 @@ class GroupsShareTest(BaseTestCase):
         self.logout()
         self.login_as(self.user)
         resp = [group["name"] for group in 
-                json.loads(self.client.get(reverse('api-v2.1-groups-share')).content)]
+                json.loads(self.client.get(reverse('api-v2.1-groups-sharable')).content)]
         self.assertIn('onetoone', resp)
 
     def tearDown(self):

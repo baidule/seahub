@@ -15,12 +15,15 @@ from seahub.utils import is_org_context
 from seahub.settings import ENABLE_SHARE_ANY_GROUPS
 
 
-class GroupsShareView(APIView):
+class GroupsSharableView(APIView):
+    """Only for share group selection"""
     authentication_classes = (TokenAuthentication, SessionAuthentication)
     permission_classes = (IsAuthenticated,)
     throttle_classes = (UserRateThrottle, )
 
     def get(self, request):
+        """Get personal groups or get all groups
+        """
         org_id = None
         username = request.user.username
         if ENABLE_SHARE_ANY_GROUPS:
